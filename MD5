@@ -1,4 +1,4 @@
-9b948baec087191c2c0aa051c4294ba2 *DESCRIPTION
+272c2abb51e5ed29494428ea3461fe7d *DESCRIPTION
 e848cba3802d33e2083a4a354209546f *NAMESPACE
 942da634cf46bbd747e546bdeb215ef3 *R/MetaStan-package.R
 780a15765a3334607b7c3d0b8e696c7b *R/convert_data_arm.R
@@ -13,7 +13,7 @@ ce621873954c7f8977926e15b0417bc6 *data/dat.Berkey1995.rda
 d0e63b0e8def19183fff90232be06c7e *data/dat.Crins2014.rda
 c0ba7941e9049c0c6913d18c913b36fb *inst/doc/MetaStan_BNHM.R
 5441c6bc3ec03fcaac3341fb1c192b0e *inst/doc/MetaStan_BNHM.Rmd
-db4cfd8bf08c2370f07309182fb38b75 *inst/doc/MetaStan_BNHM.html
+30aba9cce3600b57bb0e8ea473470e8d *inst/doc/MetaStan_BNHM.html
 855c064dbf8deaff96c8dc8a87169109 *inst/include/meta_header.hpp
 2973e6e567260f5e275a65da334f101b *man/MetaStan-package.Rd
 92c446aecf5a0f21832af1404d0b4375 *man/convert_data_arm.Rd
@@ -21,9 +21,10 @@ db4cfd8bf08c2370f07309182fb38b75 *inst/doc/MetaStan_BNHM.html
 0fa5917004241a00da2b24e493c16040 *man/dat.Crins2014.Rd
 22413b3c47447ff8538722edfd0a21fc *man/meta_stan.Rd
 2241ff98b75bc755b339a9e2914e13fe *man/print.meta_stan.Rd
-3fc9097c39ba6cee487eb57e702e3ef0 *src/Makevars
-323af01a7eb0d34299735a4ec8f9c46a *src/Makevars.win
-9316fd4812f33f008fa3bb805e053ac7 *src/init.cpp
+e385b69646bcc4555858feb68eb1f52e *src/Makevars
+880c643eedc0c5e2ebe0e909fa3169d8 *src/Makevars.win
+722f2d6884b60da9ca53505a3c4a45c2 *src/init.cpp
+d41d8cd98f00b204e9800998ecf8427e *src/stan_files/BNHM_Higgins-336025a9.o.tmp
 2f54aacc28f6a3d750af95cdb70e7dac *src/stan_files/BNHM_Higgins.stan
 6ac6df4dd98158380a1a5b976adaaf42 *src/stan_files/BNHM_Smith.stan
 74ed311a47310882303fce5e44ad1808 *src/stan_files/Beta_binomial.stan
@@ -31,6 +32,6 @@ db4cfd8bf08c2370f07309182fb38b75 *inst/doc/MetaStan_BNHM.html
 aad04117b27f0f46c0af47803360c610 *src/stan_files/chunks/license.stan
 d32536b487e8c8ba2c076486974feb89 *tests/testthat.R
 64ecf8581824198372e1b2f486cda194 *tests/testthat/test_first.R
-34e6b12ba370464b64c80d303f379d7d *tools/make_cc.R
+3bd7d8eb5bf54a92e43ca67941fb9998 *tools/make_cc.R
 5441c6bc3ec03fcaac3341fb1c192b0e *vignettes/MetaStan_BNHM.Rmd
-2ea6ba1566a39cfa79cb45e408ad62c5 *vignettes/references.bib
+3e2383a167fea37602502d24395d7d69 *vignettes/references.bib
