@@ -41,10 +41,11 @@ forest.plot <- ggplot(d, aes(x = x, y = y, ymin = ylo, ymax = yhi)) +
 plot(forest.plot)
 
 ## ----bnhmFit, results="hide"---------------------------------------------
-bnhm1.BCG.stan  <- meta_stan(ntrt = dat.Berkey1995$nt, 
-                             nctrl = dat.Berkey1995$nc, 
-                             rtrt = dat.Berkey1995$rt,
-                             rctrl = dat.Berkey1995$rc,
+bnhm1.BCG.stan  <- meta_stan(ntrt = nt, 
+                             nctrl = nc, 
+                             rtrt = rt,
+                             rctrl = rc,
+                             data = dat.Berkey1995,
                              tau_prior_dist = "half-normal",
                              tau_prior = 0.5,
                              theta_prior = c(0, 2.82),
@@ -63,10 +64,11 @@ bnhm1.BCG.stan  <- meta_stan(ntrt = dat.Berkey1995$nt,
 print(bnhm1.BCG.stan)
 
 ## ----bnhm2Fit, results="hide"--------------------------------------------
-bnhm2.BCG.stan  <- meta_stan(ntrt = dat.Berkey1995$nt, 
-                             nctrl = dat.Berkey1995$nc, 
-                             rtrt = dat.Berkey1995$rt,
-                             rctrl = dat.Berkey1995$rc,
+bnhm2.BCG.stan  <- meta_stan(ntrt = nt, 
+                             nctrl = nc, 
+                             rtrt = rt,
+                             rctrl = rc,
+                             data = dat.Berkey1995,
                              theta_prior = c(0, 2.82),
                              tau_prior_dist = "half-normal",
                              tau_prior = 0.5,

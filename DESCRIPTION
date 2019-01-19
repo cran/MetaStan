@@ -1,17 +1,17 @@
 Package: MetaStan
-Version: 0.0.2
+Version: 0.0.3
 Title: Bayesian Meta-Analysis via 'Stan'
 Description: Performs Bayesian meta-analysis using 'Stan'. 
              Includes binomial-normal hierarchical models and option to use weakly informative priors for the
              heterogeneity parameter and the treatment effect parameter which are described in 
              Guenhan, Roever, and Friede (2018) <arXiv:1809.04407>.
 Authors@R: c(person("Burak Kuersad", "Guenhan", email="burak.gunhan@med.uni-goettingen.de", 
-             role=c("aut", "cre")),
+             role=c("aut", "cre"), comment = c(ORCID = "0000-0002-7454-8680")),
              person("Trustees of", "Columbia University", role="cph", comment="src/init.cpp, 
              tools/make_cpp.R, R/stanmodels.R"))
 License: GPL (>= 3)
 Encoding: UTF-8
-Date: 2018-11-14
+Date: 2019-01-19
 LazyData: true
 ByteCompile: true
 Depends: R (>= 3.4.0), Rcpp (>= 0.12.17), methods
@@ -25,10 +25,11 @@ RoxygenNote: 6.1.0
 URL: http://github.com/gunhanb/MetaStan
 BugReports: http://github.com/gunhanb/MetaStan/issues
 VignetteBuilder: knitr
-Packaged: 2018-11-14 18:09:28 UTC; burakgunhan
-Author: Burak Kuersad Guenhan [aut, cre],
+Packaged: 2019-01-19 21:32:47 UTC; burakgunhan
+Author: Burak Kuersad Guenhan [aut, cre]
+    (<https://orcid.org/0000-0002-7454-8680>),
   Trustees of Columbia University [cph] (src/init.cpp, tools/make_cpp.R,
     R/stanmodels.R)
 Maintainer: Burak Kuersad Guenhan <burak.gunhan@med.uni-goettingen.de>
 Repository: CRAN
-Date/Publication: 2018-11-15 08:20:15 UTC
+Date/Publication: 2019-01-19 22:10:04 UTC

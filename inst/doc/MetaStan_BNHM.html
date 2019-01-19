@@ -265,10 +265,11 @@ plot(forest.plot)
 
 <p><code>metastan</code> is the main fitting function of this package. The main computations are executed via the <code>rstan</code> package&#39;s <code>sampling</code> function. We can fit the binomial-normal hierarchical model [@Guenhan] using a weakly informative prior for treatment effect as follows:</p>
 
-<pre><code class="r">bnhm1.BCG.stan  &lt;- meta_stan(ntrt = dat.Berkey1995$nt, 
-                             nctrl = dat.Berkey1995$nc, 
-                             rtrt = dat.Berkey1995$rt,
-                             rctrl = dat.Berkey1995$rc,
+<pre><code class="r">bnhm1.BCG.stan  &lt;- meta_stan(ntrt = nt, 
+                             nctrl = nc, 
+                             rtrt = rt,
+                             rctrl = rc,
+                             data = dat.Berkey1995,
                              tau_prior_dist = &quot;half-normal&quot;,
                              tau_prior = 0.5,
                              theta_prior = c(0, 2.82),
@@ -292,18 +293,19 @@ launch_shinystan(bnhm1.BCG.shinystan)
 # Meta-analysis using MetaStan
 # Mean treatment effect
 #  mean  2.5%   50% 97.5% 
-# -0.75 -1.13 -0.74 -0.35 
+# -0.75 -1.13 -0.75 -0.36 
 # Heterogeneity stdev
 #  mean  2.5%   50% 97.5% 
-#  0.60  0.37  0.58  0.93
+#  0.59  0.36  0.58  0.92
 </code></pre>
 
 <p>Note that this model corresponds to Model 4 in @Jackson. The model 2 in @Jackson can be fitted by specfying <code>model = &quot;BNHM2&quot;</code> as follows: </p>
 
-<pre><code class="r">bnhm2.BCG.stan  &lt;- meta_stan(ntrt = dat.Berkey1995$nt, 
-                             nctrl = dat.Berkey1995$nc, 
-                             rtrt = dat.Berkey1995$rt,
-                             rctrl = dat.Berkey1995$rc,
+<pre><code class="r">bnhm2.BCG.stan  &lt;- meta_stan(ntrt = nt, 
+                             nctrl = nc, 
+                             rtrt = rt,
+                             rctrl = rc,
+                             data = dat.Berkey1995,
                              theta_prior = c(0, 2.82),
                              tau_prior_dist = &quot;half-normal&quot;,
                              tau_prior = 0.5,
@@ -314,10 +316,10 @@ launch_shinystan(bnhm1.BCG.shinystan)
 # Meta-analysis using MetaStan
 # Mean treatment effect
 #  mean  2.5%   50% 97.5% 
-# -0.75 -1.16 -0.75 -0.37 
+# -0.76 -1.13 -0.76 -0.38 
 # Heterogeneity stdev
 #  mean  2.5%   50% 97.5% 
-#  0.60  0.37  0.58  0.94
+#  0.60  0.37  0.58  0.93
 </code></pre>
 
 <p>Please see @Guenhan and @Jackson for complete model descriptions.</p>
