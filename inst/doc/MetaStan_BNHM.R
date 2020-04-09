@@ -1,18 +1,18 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#"
 )
 
-## ----install, eval = FALSE-----------------------------------------------
+## ----install, eval = FALSE----------------------------------------------------
 #  devtools:::install_github("gunhanb/MetaStan")
 
-## ----dataset-------------------------------------------------------------
+## ----dataset------------------------------------------------------------------
 library("MetaStan")
 data("dat.Berkey1995", package = "MetaStan")
 head(dat.Berkey1995)
 
-## ----forestplot, echo=TRUE, results=TRUE---------------------------------
+## ----forestplot, echo=TRUE, results=TRUE--------------------------------------
 library(ggplot2)
 # Calculating log odds ratios and variances from data
 logodds <- function(x) log((x[1] * (x[4] - x[3]))/((x[2] - x[1]) * x[3]))
@@ -40,7 +40,7 @@ forest.plot <- ggplot(d, aes(x = x, y = y, ymin = ylo, ymax = yhi)) +
 
 plot(forest.plot)
 
-## ----bnhmFit, results="hide"---------------------------------------------
+## ----bnhmFit, results="hide"--------------------------------------------------
 bnhm1.BCG.stan  <- meta_stan(ntrt = nt, 
                              nctrl = nc, 
                              rtrt = rt,
@@ -54,16 +54,16 @@ bnhm1.BCG.stan  <- meta_stan(ntrt = nt,
                              iter = 2000,
                              warmup = 1000)
 
-## ----shinystan, eval = FALSE---------------------------------------------
+## ----shinystan, eval = FALSE--------------------------------------------------
 #  library("shinystan")
 #  ## Firstly convert "stan" object to a "shinystan" object
 #  bnhm1.BCG.shinystan = as.shinystan(bnhm1.BCG.stan$fit)
 #  launch_shinystan(bnhm1.BCG.shinystan)
 
-## ----print---------------------------------------------------------------
+## ----print--------------------------------------------------------------------
 print(bnhm1.BCG.stan)
 
-## ----bnhm2Fit, results="hide"--------------------------------------------
+## ----bnhm2Fit, results="hide"-------------------------------------------------
 bnhm2.BCG.stan  <- meta_stan(ntrt = nt, 
                              nctrl = nc, 
                              rtrt = rt,
@@ -74,6 +74,6 @@ bnhm2.BCG.stan  <- meta_stan(ntrt = nt,
                              tau_prior = 0.5,
                              model = "BNHM2")
 
-## ----print2--------------------------------------------------------------
+## ----print2-------------------------------------------------------------------
 print(bnhm2.BCG.stan)
 

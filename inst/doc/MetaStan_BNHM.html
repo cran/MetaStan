@@ -203,7 +203,7 @@ hr {
 <body>
 <h2>Introduction</h2>
 
-<p>To fit meta-analysis models using frequentist methods, there are many R packages available including <code>metafor</code>. On the other hand, Bayesian estimation methods such as Markov chain Monte Carlo (MCMC) are very attractive for meta-analysis, especially because they can be used to fit more complicated models. These include binomial-normal hierarchical models and beta-binomial models which are based on the exact distributional assumptions unlike (commonly used) normal-normal hierarchical model. Another advantage of Bayesian methods to be able to use informative prior distributions for example to regularize heterogeneity estimates in case of low number of studies. Thus, we developed <code>MetaStan</code> which uses <strong>Stan</strong> (a modern MCMC engine) to fit several pairwise meta-analysis models including binomial-normal hierarchical model and beta-binomial model. This package is also the accompanying package of @Guenhan.</p>
+<p>To fit meta-analysis models using frequentist methods, there are many R packages available including <code>metafor</code>. On the other hand, Bayesian estimation methods such as Markov chain Monte Carlo (MCMC) are very attractive for meta-analysis, especially because they can be used to fit more complicated models. These include binomial-normal hierarchical models and beta-binomial models which are based on the exact distributional assumptions unlike (commonly used) normal-normal hierarchical model. Another advantage of Bayesian methods to be able to use informative prior distributions for example to regularize heterogeneity estimates in case of low number of studies. Thus, we developed <code>MetaStan</code> which uses <strong>Stan</strong> (a modern MCMC engine) to fit several pairwise meta-analysis models including binomial-normal hierarchical model and beta-binomial model. This package is also the accompanying package for Günhan, Röver, and Friede (2020).</p>
 
 <h2>Installation</h2>
 
@@ -263,7 +263,7 @@ plot(forest.plot)
 
 <h2>Fitting a binomial-normal hierarchical model</h2>
 
-<p><code>metastan</code> is the main fitting function of this package. The main computations are executed via the <code>rstan</code> package&#39;s <code>sampling</code> function. We can fit the binomial-normal hierarchical model [@Guenhan] using a weakly informative prior for treatment effect as follows:</p>
+<p><code>metastan</code> is the main fitting function of this package. The main computations are executed via the <code>rstan</code> package&#39;s <code>sampling</code> function. We can fit the binomial-normal hierarchical model (Günhan, Röver, and Friede, 2020) using a weakly informative prior for treatment effect as follows:</p>
 
 <pre><code class="r">bnhm1.BCG.stan  &lt;- meta_stan(ntrt = nt, 
                              nctrl = nc, 
@@ -293,13 +293,13 @@ launch_shinystan(bnhm1.BCG.shinystan)
 # Meta-analysis using MetaStan
 # Mean treatment effect
 #  mean  2.5%   50% 97.5% 
-# -0.76 -1.17 -0.76 -0.37 
+# -0.75 -1.15 -0.75 -0.37 
 # Heterogeneity stdev
 #  mean  2.5%   50% 97.5% 
-#  0.60  0.37  0.58  0.93
+#  0.59  0.36  0.57  0.93
 </code></pre>
 
-<p>Note that this model corresponds to Model 4 in @Jackson. The model 2 in @Jackson can be fitted by specfying <code>model = &quot;BNHM2&quot;</code> as follows: </p>
+<p>Note that this model corresponds to Model 4 in Jackson et al (2018). The model 2 in Jackson et al (2018) can be fitted by specfying <code>model = &quot;BNHM2&quot;</code> as follows: </p>
 
 <pre><code class="r">bnhm2.BCG.stan  &lt;- meta_stan(ntrt = nt, 
                              nctrl = nc, 
@@ -316,15 +316,23 @@ launch_shinystan(bnhm1.BCG.shinystan)
 # Meta-analysis using MetaStan
 # Mean treatment effect
 #  mean  2.5%   50% 97.5% 
-# -0.76 -1.13 -0.76 -0.41 
+# -0.76 -1.15 -0.75 -0.39 
 # Heterogeneity stdev
 #  mean  2.5%   50% 97.5% 
-#  0.60  0.37  0.58  0.93
+#  0.60  0.36  0.58  0.95
 </code></pre>
 
-<p>Please see @Guenhan and @Jackson for complete model descriptions.</p>
+<p>Please see Günhan, Röver, and Friede (2020) and Jackson et al (2018) for complete model descriptions.</p>
 
 <h1>References</h1>
+
+<p>Günhan, BK, Röver, C, and Friede, T (2020). &ldquo;Random-effects meta-analysis of few
+studies involving rare events&rdquo;. In: Research Synthesis Methods 11.1, pp. 74-90. DOI:
+10.1002/jrsm.1370.</p>
+
+<p>Jackson, D et al. (2018). &ldquo;A comparison of seven random-effects models for metaanalyses
+that estimate the summary odds ratio&rdquo;. In: Statistics in Medicine 37.7,
+pp. 1059-1085. DOI: 10.1002/sim.7588.</p>
 
 </body>
 
