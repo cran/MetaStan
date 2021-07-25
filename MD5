@@ -1,4 +1,4 @@
-74b5bd41e409a650fd9ffff9d61b3f19 *DESCRIPTION
+47dda8478c7e3037bb7f673086db523f *DESCRIPTION
 5225df96c3c903eb1ed281517ba08310 *NAMESPACE
 4818254f1a6000e52d374bf7367f1cdf *R/MBMA_stan.R
 942da634cf46bbd747e546bdeb215ef3 *R/MetaStan-package.R
@@ -11,14 +11,13 @@ a0ae2c5ebaec7f1bc0f5bcedb87c11a3 *R/dat.Berkey1995.R
 d0b7ccfb5185fc4ea63b3b2d4c6b1e76 *R/print.R
 c76e66f1774667759071b81120ff4467 *R/stanmodels.R
 576a0b9becca8931672b0365700a5bb1 *R/zzz.R
-8cf6e928e173bf155c3d79b9b0792a48 *README.md
-5e3cfd01de8d75c8794552101e0e8110 *build/vignette.rds
+d52d0dad096fdb47c920bb68051874b6 *build/vignette.rds
 ce621873954c7f8977926e15b0417bc6 *data/dat.Berkey1995.rda
 d0e63b0e8def19183fff90232be06c7e *data/dat.Crins2014.rda
 bfe018c889d822068f3be621b58ba84e *data/dat.Eletriptan.rda
 0499ea6ce494dede7cededc32dd33518 *inst/doc/MetaStan_BNHM.R
 2eb4f20a76e7c7bac8591f39e469f7a2 *inst/doc/MetaStan_BNHM.Rmd
-cdcd44182f4f10eea0484add4160a442 *inst/doc/MetaStan_BNHM.html
+883ea7a0fc28c74e31ee1b28c6dc6156 *inst/doc/MetaStan_BNHM.html
 855c064dbf8deaff96c8dc8a87169109 *inst/include/meta_header.hpp
 7b6dde82c6319e4fd86a8ec5c46fa075 *man/MBMA_stan.Rd
 2973e6e567260f5e275a65da334f101b *man/MetaStan-package.Rd
