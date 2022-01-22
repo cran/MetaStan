@@ -1,6 +1,6 @@
 #' Prepare model-based meta-analysis dataset for Stan.
 #'
-#' \code{create_MBMA_dat} converts datasets in the one-study-per-row
+#' \code{create_MetaStan_dat} converts datasets in the one-study-per-row
 #' format to one-arm-per-row format,
 #'
 #' The resulting data.frame can be used as data argument in \code{MBMA_stan}.
@@ -9,22 +9,31 @@
 #' @param armVars Vector of per-arm variables
 #'  The name of each component will be the column name in the resulting dataset.
 #' @param nArmsVar Variable holding the number of arms for each study.
-#' @return A data frame with the generated coloumns.
+#' @return A data frame with the generated columns.
 #' @author Burak Kuersad Guenhan, \email{burak.gunhan@med.uni-goettingen.de}
 #' and Gert van Valkenhoef
 #' @seealso \code{gemtc::mtc.data.studyrow} and \code{nmaINLA::create_INLA_dat}
 #' @examples
+#' \dontrun{
 #' data('dat.Eletriptan')
 #' ## Create the dataset suitable for MBMA_stan
-#' EletriptanDat <- create_MBMA_dat(dat = dat.Eletriptan,
-#' armVars = c("dose" = "d", "r" = "r", "n" = "n"), nArmsVar = 'nd')
+#' EletriptanDat <- create_MetaStan_dat(dat = dat.Eletriptan,
+#'                                      armVars = c(dose = "d",
+#'                                                  responders = "r",
+#'                                                  sampleSize = "n"),
+#'                                      nArmsVar = 'nd')
 #' ## Check that the data are correct
 #' print(EletriptanDat)
+#' }
 #' @export
-create_MBMA_dat <- function(dat = dat,
-                            armVars = c(dose = "t", responders = "r", sampleSize = "n"),
-                            nArmsVar = "nd") {
-  ######################################################## THIS CODE IS COPY PASTE FROM gemtc::mtc.data.studyrow
+create_MetaStan_dat <- function(dat = NULL,
+                                armVars = c(dose = "d",
+                                            responders = "r",
+                                            sampleSize = "n"),
+                                nArmsVar = "nd") {
+
+  if(is.null(dat$nd)) {dat$nd = 2}
+
   studyNames = 1:nrow(dat)
   patterns = c("%s", "%s%d")
   studyVars = c()
@@ -62,12 +71,15 @@ create_MBMA_dat <- function(dat = dat,
   if (all(!is.na(treatmentNames))) {
     out[["treatment"]] <- treatmentNames[out[["treatment"]]]
   }
-  datMBMA <- do.call(data.frame, out)
+  datStan <- do.call(data.frame, out)
   #####################      mtc.data.studyrow is finished
-  # Adding indicator variable needed for INLA
-  datMBMA$na <- rep(dat[[paste(nArmsVar)]], times = dat[[paste(nArmsVar)]])
-  N <- nrow(datMBMA)
+  # Adding indicator variable
+  datStan$na <- rep(dat[[paste(nArmsVar)]], times = dat[[paste(nArmsVar)]])
 
-  return(datMBMA)
+  final = list(data_long = datStan,
+               data_wide = dat)
+
+
+  return(final)
 }
 

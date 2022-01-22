@@ -17,10 +17,10 @@ library(ggplot2)
 # Calculating log odds ratios and variances from data
 logodds <- function(x) log((x[1] * (x[4] - x[3]))/((x[2] - x[1]) * x[3]))
 stdes   <- function(x) sqrt(1/x[1] + 1/(x[2] - x[1]) + 1/x[3] + 1/(x[4] - x[3]))
-r_ind   <- apply(cbind(dat.Berkey1995$rt, dat.Berkey1995$nt, 
-                 dat.Berkey1995$rc, dat.Berkey1995$nc), 1, logodds)
-se_ind  <- apply(cbind(dat.Berkey1995$rt, dat.Berkey1995$nt, 
-                 dat.Berkey1995$rc, dat.Berkey1995$nc), 1, stdes)
+r_ind   <- apply(cbind(dat.Berkey1995$r2, dat.Berkey1995$n2, 
+                 dat.Berkey1995$r1, dat.Berkey1995$n1), 1, logodds)
+se_ind  <- apply(cbind(dat.Berkey1995$r2, dat.Berkey1995$n2, 
+                 dat.Berkey1995$r1, dat.Berkey1995$n1), 1, stdes)
 lower95_ind <- r_ind + qnorm(.025) * se_ind
 upper95_ind <- r_ind + qnorm(.975) * se_ind
 # Comparison of the results
@@ -41,39 +41,26 @@ forest.plot <- ggplot(d, aes(x = x, y = y, ymin = ylo, ymax = yhi)) +
 plot(forest.plot)
 
 ## ----bnhmFit, results="hide"--------------------------------------------------
-bnhm1.BCG.stan  <- meta_stan(ntrt = nt, 
-                             nctrl = nc, 
-                             rtrt = rt,
-                             rctrl = rc,
-                             data = dat.Berkey1995,
-                             tau_prior_dist = "half-normal",
-                             tau_prior = 0.5,
-                             theta_prior = c(0, 2.82),
-                             model = "BNHM1",
-                             chains = 4,
-                             iter = 2000,
-                             warmup = 1000)
+ data('dat.Berkey1995', package = "MetaStan")
+ ## Fitting a Binomial-Normal Hierarchical model using WIP priors
+data('dat.Berkey1995', package = "MetaStan")
+## Fitting a Binomial-Normal Hierarchical model using WIP priors
+dat_MetaStan <- create_MetaStan_dat(dat = dat.Berkey1995,
+                                    armVars = c(responders = "r", sampleSize = "n"))
+
+ meta.BCG.stan  <- meta_stan(data = dat_MetaStan,
+                           likelihood = "binomial",
+                           mu_prior = c(0, 10),
+                           theta_prior = c(0, 100),
+                           tau_prior = 0.5,
+                           tau_prior_dist = "half-normal")
 
 ## ----shinystan, eval = FALSE--------------------------------------------------
 #  library("shinystan")
 #  ## Firstly convert "stan" object to a "shinystan" object
-#  bnhm1.BCG.shinystan = as.shinystan(bnhm1.BCG.stan$fit)
+#  bnhm1.BCG.shinystan = as.shinystan(meta.BCG.stan$fit)
 #  launch_shinystan(bnhm1.BCG.shinystan)
 
 ## ----print--------------------------------------------------------------------
-print(bnhm1.BCG.stan)
-
-## ----bnhm2Fit, results="hide"-------------------------------------------------
-bnhm2.BCG.stan  <- meta_stan(ntrt = nt, 
-                             nctrl = nc, 
-                             rtrt = rt,
-                             rctrl = rc,
-                             data = dat.Berkey1995,
-                             theta_prior = c(0, 2.82),
-                             tau_prior_dist = "half-normal",
-                             tau_prior = 0.5,
-                             model = "BNHM2")
-
-## ----print2-------------------------------------------------------------------
-print(bnhm2.BCG.stan)
+print(meta.BCG.stan)
 
